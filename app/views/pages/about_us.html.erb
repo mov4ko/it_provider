@@ -1,0 +1,21 @@
+<div class="about">
+	 <div class="container">
+		<h1>Наша<span class="m_1"><br><%= @about.title %></span></h1>
+	</div>
+</div>
+<div class="about_grid">
+	<div class="container">
+		<h4 class="tz-title-4 tzcolor-blue">
+            <p class="tzweight_Bold"><span class="m_1">Про<br></span>Нас</p>
+        </h4>
+		<div class="box3">
+			<div class="col-md-6">
+				<%= image_tag(@about.image.url, class: 'img-responsive') %>
+			</div>
+			<div class="col-md-6 row_2">
+				<p class="m_8"><%= @about.content %></p>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+</div>

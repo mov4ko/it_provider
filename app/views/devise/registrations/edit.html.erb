@@ -1,0 +1,72 @@
+<div class="about">
+   <div class="container">
+    <h1>Вітаємо<span class="m_1"><br><%= current_user.first_name %> <%= current_user.last_name %></span></h1>
+  </div>
+</div>
+<div class="account_grid">
+  <div class="container">
+  <%= devise_error_messages! %>
+     <div class="register">
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+<div class="register-top-grid">
+   <h4 class="tz-title-5 tzcolor-blue">
+       <p class="tzweight_Bold"><span class="m_20">Редагування <%= resource_name.to_s.humanize %></span></p>
+     </h4>
+
+
+     <div>
+      <span class="m_25">Аватар</span>
+      <%= f.file_field :avatar %>
+     </div>
+
+     <div>
+      <span class="m_25">Ім’я<label>*</label></span>
+      <%= f.text_field :first_name %>
+     </div>
+     <div>
+      <span class="m_25">Прізвище<label>*</label></span>
+      <%= f.text_field :last_name %> 
+     </div>
+
+   <div>
+     <span class="m_25">Email Address<label>*</label></span>
+     <%= f.email_field :email, autofocus: true %>
+   </div>
+</div>
+<div class="clearfix"> </div>
+<div class="register-bottom-grid">
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+  <h4 class="tz-title-5 tzcolor-blue">
+                           <p class="tzweight_Bold"><span class="m_20">Currently waiting confirmation for: <%= resource.unconfirmed_email %></span></p>
+                        </h4>
+  <% end %>
+
+  <div>
+    <span class="m_25">Пароль<label>(leave blank if you don't want to change it)</label></span>
+    <%= f.password_field :password, autocomplete: "off" %>
+   </div>
+
+  <div>
+    <span class="m_25">Підтвердіть пароль</span>
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_password %> <i>(введіть ваш пароль для того щоб зберегти зміни)</i><br />
+    <%= f.password_field :current_password, autocomplete: "off" %>
+  </div>
+    <div class="clearfix"> </div>
+   </div>
+  <div class="clearfix"> </div>
+  <div class="actions">
+  </div>
+  <div class="register-but">
+         <%= f.submit "Оновити дані" %>
+         <div class="clearfix"> </div>
+    </div>
+<% end %>
+
+       </div>
+      </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="about">
+	 <div class="container">
+		<h1>Наш<span class="m_1"><br>Блог</span></h1>
+	</div>
+</div>
+
+<div class="about_grid">
+	<div class="container">
+		<h4 class="tz-title-4 tzcolor-blue">
+            <p class="tzweight_Bold"><span class="m_1">Наші<br></span>Статті</p>
+        </h4>
+        <div class="blog">
+        	<% @posts.each do |post| %>
+		        <div class="blog_top">
+		           <%= link_to single_blog_path(post) do %><%= image_tag(post.image.url, class: 'img-responsive') %><% end %>
+		           <h3><%= link_to post.title, single_blog_path(post) %></h3>
+		           <h4>Дата : <%= post.updated_at %></h4>
+		           <%= link_to 'Читати', single_blog_path(post), class: 'faq_but1' %>
+		           <div class="links">
+			  		  <ul class="blog_links">
+			  			<li><a href="#"><i class="blog_circle">24 </i><span>Comments</span></a></li>
+			  		  </ul>
+			  		  <div class="clearfix"></div>
+			  	   </div>
+			  	</div>
+		  	<% end %>
+
+	    </div>
+	 </div>
+</div>

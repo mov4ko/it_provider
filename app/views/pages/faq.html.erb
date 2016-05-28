@@ -1,0 +1,31 @@
+<div class="about">
+	 <div class="container">
+		<h1>FAQ<span class="m_1"><br>Питання</span></h1>
+	</div>
+</div>
+
+<div class="about_grid">
+	<div class="container">
+		<h4 class="tz-title-4 tzcolor-blue">
+            <p class="tzweight_Bold"><span class="m_1">Питання<br></span>FAQ'S</p>
+        </h4>
+        <div class="faq_top">
+		<div class="plans_grid">
+			<% @faq.each do |q| %>
+			    <div class="col-md-6">
+					<ul class="project_box">
+					  <li class="mini-post-meta2">П</li>
+					  <li class="desc"><h5><a href="#"><%= q.question %></a></h5>
+					  	 <p><%= q.answer %></p>
+					  </li>	
+					  <div class="clearfix"> </div>
+					</ul>
+				</div>
+			<% end %>
+			<div class="clearfix"> </div>
+		</div>
+
+		<%= render partial: 'pages/shared/question_form', locals: { question: @question } %>
+	  </div>
+    </div>
+</div>

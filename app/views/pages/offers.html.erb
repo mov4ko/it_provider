@@ -1,0 +1,24 @@
+<div class="about">
+	 <div class="container">
+		<h1>Гарячі<span class="m_1"><br>пропозиції</span></h1>
+	</div>
+</div>
+
+<div class="about_grid">
+	<div class="container">
+		<h4 class="tz-title-4 tzcolor-blue">
+            <p class="tzweight_Bold"><span class="m_1">Наші<br></span>пропозиції</p>
+        </h4>
+        <div class="blog">
+        	<% @offers.each do |offer| %>
+		        <div class="blog_top clearfix">
+		           <%= image_tag(offer.image.url, class: 'img-responsive') %>
+		           <h3><%= offer.title %></h3>
+		           <h4>Дата : <%= offer.updated_at %></h4>
+		            <p><%= offer.content %></p>
+			  	</div>
+		  	<% end %>
+
+	    </div>
+	 </div>
+</div>

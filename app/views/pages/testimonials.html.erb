@@ -1,0 +1,27 @@
+<div class="about">
+	 <div class="container">
+		<h1>Відгуки<span class="m_1"><br>про нас</span></h1>
+	</div>
+</div>
+
+<div class="about_grid">
+	<div class="container">
+		<h4 class="tz-title-4 tzcolor-blue">
+            <p class="tzweight_Bold"><span class="m_1">Відгуки<br></span>наших клієнтів</p>
+        </h4>
+        <div class="testimonial">
+        	<% @testimonials.each do |testimonial| %>
+        	  <div class="testimonial_grid col-sm-4" style="width: calc(33.33333% - 20px); margin: 10px;">
+        		<p><span class="quotes1"> </span><%= testimonial.message %> </p>
+                <ul class="testi_box">
+                	<li class="testi_box-left"><%= image_tag(testimonial.photo.url, class: 'img-responsive') %></li>
+                	<li class="testi_box-right"><h4>Написав/ла<br><span class="m_13"><%= testimonial.name %></span></h4></li>
+                	<div class="clearfix"> </div>
+                </ul>        	  
+        	  </div>
+    	  	<% end %>
+        	<div class="clearfix"> </div>
+        </div>
+        <%= render partial: 'pages/shared/question_form', locals: { question: @question } %>
+    </div>
+</div>

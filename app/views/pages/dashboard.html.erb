@@ -1,0 +1,16 @@
+<div class="about">
+	 <div class="container">
+		<h1>Вітаємо<span class="m_1"><br><%= current_user.first_name %> <%= current_user.last_name %></span></h1>
+	</div>
+</div>
+<div class="about_grid">
+	<div class="container">
+		<h4 class="tz-title-4 tzcolor-blue">
+            <p class="tzweight_Bold"><span class="m_1">Куток<br></span>користувача</p>
+        </h4>
+        <div class="blog">
+        	<%= link_to 'Редагувати профіль', edit_user_registration_path, class: "order-btn col-sm-3" %>
+
+	    </div>
+     </div>
+</div>
