@@ -8,9 +8,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+     super
+     @account = Account.new
+     @account.user = resource
+     @account.save
+  end
 
   # GET /resource/edit
   # def edit

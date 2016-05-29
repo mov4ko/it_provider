@@ -57,9 +57,9 @@
 						<li><a href="javascript:;"><%= tariff.service2 %></a></li>
 					</ul>
 					<% if user_signed_in? %>
-						<a class="popup-with-zoom-anim order-btn" href="#small-dialog">Купити</a>
+						<%= link_to 'Купити', buy_tariff_path(tariff), method: :post, class: 'order-btn' %>
 					<% else %>
-						<%= link_to 'Увійти щоб замовити', new_user_session_path, class: 'order-btn' %></a>
+						<%= link_to 'Увійти щоб замовити', new_user_session_path, class: 'order-btn' %>
 					<% end %>
 				</div>
 		     </div>

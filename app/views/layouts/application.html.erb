@@ -18,19 +18,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 <!-- webfonts -->
 		<script>
-			$(document).ready(function() {
-				$('.popup-with-zoom-anim').magnificPopup({
-					type: 'inline',
-					fixedContentPos: false,
-					fixedBgPos: true,
-					overflowY: 'auto',
-					closeBtnInside: true,
-					preloader: false,
-					midClick: true,
-					removalDelay: 300,
-					mainClass: 'my-mfp-zoom-in'
-			});
-		});
+		// 	$(document).ready(function() {
+		// 		$('.popup-with-zoom-anim').magnificPopup({
+		// 			type: 'inline',
+		// 			fixedContentPos: false,
+		// 			fixedBgPos: true,
+		// 			overflowY: 'auto',
+		// 			closeBtnInside: true,
+		// 			preloader: false,
+		// 			midClick: true,
+		// 			removalDelay: 300,
+		// 			mainClass: 'my-mfp-zoom-in'
+		// 	});
+		// });
 		</script>
 </head>
 <body>
@@ -45,7 +45,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<% if user_signed_in? %>
 							<li class="active"><%= image_tag(current_user.avatar.url(:thumb), class: 'avatar-small') %></li> 
 							<li class="active"><%= link_to user_dashboard_path do %>
-								Доброго дня, <%= current_user.first_name %> <%= current_user.first_name %>
+								Доброго дня, <%= current_user.first_name %> <%= current_user.last_name %>
 							<%end%>
 							</li> 
 							<li class="active"><%= link_to 'Вихід', destroy_user_session_path, method: :delete %></li> 
@@ -67,7 +67,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li><%= link_to 'FAQ', faq_path %></li>
 					<li><%= link_to 'Відгуки', testimonials_path %></li>
 					<li><%= link_to 'Блог', blog_path %></li>
-					<li><a href="contact.html">Contact Us</a></li>
+					<li><%= link_to 'Контакти', contact_path %></li>
 				 </ul>
 	      </div><!-- end h_menu4 -->
      </div>
@@ -97,10 +97,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="container">
 		<div class="col-md-3 box_1">
 			<img src="<%= root_url %>images/f_logo.png" alt=""/>
-			<p>© 2015</p>
+			<p>© 2016</p>
 		</div>
 		<div class="col-md-3 box_2">
-			<h4>Quick Links</h4>
+			<h4>Посилання</h4>
 			<ul class="list_2">
 				<li><%= link_to 'Головна', root_path %></li>
 				<li><%= link_to 'Про нас', about_path %></li>
@@ -111,18 +111,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<li><%= link_to 'FAQ', faq_path %></li>
 				<li><%= link_to 'Відгуки', testimonials_path %></li>
 				<li><%= link_to 'Блог', blog_path %></li>
-				<li><a href="contact.html">Contact Us</a></li>
+				<li><%= link_to 'Контакти', contact_path %></li>
 			</ul>
 			<div class="clearfix"> </div>
 		</div>
 		<div class="col-md-3 box_2">
-			<h4>Contact Us</h4>
+			<h4>Зв’язатись</h4>
 			<address class="address">
               <dl>
                  <dt></dt>
-                 <dd>Address : <span>3598 But I must explain to you how all this mistaken</span></dd>
-                 <dd>E-mail : <a href="mailto@example.com">info(at)hosting.com</a></dd>
-                 <dd>Call : <span> +1 800 547 5478</span></dd>
+                 <dd>Адреса : <span><%= @contact.addr_country == 'UA' ? 'Україна' : @contact.addr_country %>, <%=  @contact.addr_city %>, <%=  @contact.addr_street %></span></dd>
+                 <dd>E-mail : <a href="mailto:<%=  @contact.email_office %>"><%=  @contact.email_office %></a></dd>
+                 <dd>Дзвінок : <span> <%=  @contact.phone_office %></span></dd>
               </dl>
            </address>
 		</div>

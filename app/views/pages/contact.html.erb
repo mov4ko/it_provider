@@ -1,0 +1,56 @@
+<div class="about">
+	 <div class="container">
+		<h1>Центр<span class="m_1"><br>Підтримки</span></h1>
+	</div>
+</div>
+<div class="support_box">
+	<div class="container">
+		<div class="col-md-6">
+		  <h4 class="tz-title-4 tzcolor-blue">
+            <p class="tzweight_Bold"><span class="m_1">Інформація<br></span>Для зв’язку</p>
+          </h4>
+          <p class="text1"><%= @contact.content %></p>
+		  <div class="contact_address1">
+		  	<div class="col_1_of_2 span_1_of_2 row_5">
+			  	 <h4 class="tz-title-6">
+	              <p><span class="m_21">Адреса</span></p>
+	             </h4>
+	             <p><%= @contact.addr_country == 'UA' ? 'Україна' : @contact.addr_country %></p>
+	             <p><%= @contact.addr_city %></p>
+	             <p><%= @contact.addr_street %></p>	
+		  	</div>
+		  	<div class="col_1_of_2 span_1_of_2 row_5">
+			  	 <h4 class="tz-title-6">
+	              <p><span class="m_21">Email адреса</span></p>
+	             </h4>
+	             <p><a href="malito:mail@demolink.org">Загальний : <%= @contact.email_general %></a></p>
+	             <p><a href="malito:mail@demolink.org">Офіс : <%= @contact.email_office %></a></p>
+		  	</div>
+		  	<div class="clearfix"></div>
+		  </div>
+		  <div class="contact_address1">
+		  	<div class="col_1_of_2 span_1_of_2 row_5">
+			  	 <h4 class="tz-title-6">
+	              <p><span class="m_21">Телефон</span></p>
+	             </h4>
+	             <p>Офіс : <%= @contact.phone_office %></p>
+	             <p>Мобільний : <%= @contact.phone_mobile %></p>
+	        </div>
+		  	<div class="clearfix"></div>
+		  </div>
+		</div>
+		<div class="col-md-6 contact_right">
+		  <h4 class="tz-title-4 tzcolor-blue">
+            <p class="tzweight_Bold"><span class="m_1">Контактна<br></span>Форма</p>
+          </h4>
+	          	<%= form_for @question do |form| %>
+					<%= form.text_field :name, class: 'text', placeholder: "Ім’я" %>
+	             	<%= form.text_field :email, class: 'text', placeholder: "Email" %>
+					<%= form.text_field :subject, class: 'text', placeholder: "Тема" %>
+					<%= form.text_area :message, placeholder: "Ваше повідомлення" %>
+	            	<%= form.submit "Надіслати" %>
+	      		<% end %>
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+</div>

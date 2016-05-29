@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160528194450) do
+ActiveRecord::Schema.define(version: 20160529174448) do
 
   create_table "abouts", force: :cascade do |t|
     t.datetime "created_at",         null: false
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 20160528194450) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+  end
+
+  create_table "accounts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "money",      default: "10000"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "active_admin_comments", force: :cascade do |t|
@@ -77,6 +84,19 @@ ActiveRecord::Schema.define(version: 20160528194450) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.text     "content"
+    t.string   "addr_country"
+    t.string   "addr_city"
+    t.string   "addr_street"
+    t.string   "email_general"
+    t.string   "email_office"
+    t.string   "phone_mobile"
+    t.string   "phone_office"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "faqs", force: :cascade do |t|
     t.string   "question"
     t.text     "answer"
@@ -114,6 +134,16 @@ ActiveRecord::Schema.define(version: 20160528194450) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+  end
+
+  create_table "user_tariffs", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "tariff_id"
+    t.string   "expired_date"
+    t.boolean  "current"
+    t.boolean  "end"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "users", force: :cascade do |t|

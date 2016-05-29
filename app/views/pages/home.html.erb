@@ -107,118 +107,24 @@
 		<h4 class="tz-title-4 tzcolor-blue">
             <p class="tzweight_Bold"><span class="m_1">Наші<br></span>Тарифи</p>
         </h4>
-		    <div class="col-md-3">
-							<div class="pricing-table-grid">
-								<h3><span class="dollar">$</span>5<br><span class="month">Per Month</span></h3>
-								<ul>
-									<li><span>Standard Plan</span></li>
-									<li><a href="#">10GB Disk Space</a></li>
-									<li><a href="#">1TB Bandwidth</a></li>
-									<li><a href="#">Free DDoS Protection</a></li>
-									<li><a href="#">Free Daily Backups</a></li>
-									<li><a href="#">Managed Hosting</a></li>
-								</ul>
-								<a class="popup-with-zoom-anim order-btn" href="#small-dialog">Sign Up</a>
-							</div>
-							<div id="small-dialog" class="mfp-hide">
-									<div class="pop_up">
-									 	<div class="payment-online-form-left">
-											<form>
-												<h4><span class="shipping"> </span>Shipping</h4>
-												<ul>
-													<li><input class="text-box-dark" type="text" value="Frist Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Frist Name';}"></li>
-													<li><input class="text-box-dark" type="text" value="Last Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Last Name';}"></li>
-												</ul>
-												<ul>
-													<li><input class="text-box-dark" type="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}"></li>
-													<li><input class="text-box-dark" type="text" value="Company Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Company Name';}"></li>
-												</ul>
-												<ul>
-													<li><input class="text-box-dark" type="text" value="Phone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}"></li>
-													<li><input class="text-box-dark" type="text" value="Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Address';}"></li>
-													<div class="clearfix"> </div>
-												</ul>
-												<div class="clear"> </div>
-											<ul class="payment-type">
-												<h4><span class="payment"> </span> Payments</h4>
-												<li>
-													<span class="col_checkbox">
-													<input id="3" class="css-checkbox1" type="checkbox">
-													<label for="3" name="demo_lbl_1" class="css-label1"> </label>
-													<a class="visa" href="#"> </a>
-													</span>
-												</li>
-												<li>
-													<span class="col_checkbox">
-														<input id="4" class="css-checkbox2" type="checkbox">
-														<label for="4" name="demo_lbl_2" class="css-label2"> </label>
-														<a class="paypal" href="#"> </a>
-													</span>
-												</li>
-												<div class="clearfix"> </div>
-											</ul>
-												<ul>
-													<li><input class="text-box-dark" type="text" value="Card Number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Card Number';}"></li>
-													<li><input class="text-box-dark" type="text" value="Name on card" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name on card';}"></li>
-													<div class="clearfix"> </div>
-												</ul>
-												<ul>
-													<li><input class="text-box-light hasDatepicker" type="text" id="datepicker" value="Expiration Date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Expiration Date';}"><em class="pay-date"> </em></li>
-													<li><input class="text-box-dark" type="text" value="Security Code" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Security Code';}"></li>
-													<div class="clearfix"> </div>
-												</ul>
-												<ul class="payment-sendbtns">
-													<li><input type="reset" value="Cancel"></li>
-													<li><input type="submit" value="Process order"></li>
-												</ul>
-												<div class="clearfix"> </div>
-											</form>
-										</div>
-						  			</div>
-								</div>
+		    <% @tariffs.each do |tariff| %>
+			<div class="col-md-4">
+				<div class="pricing-table-grid">
+					<h3><span class="dollar">₴</span><%= tariff.price %><br><span class="month">За місяць</span></h3>
+					<ul>
+						<li><span><%= tariff.title %></span></li>
+						<li><a href="javascript:;"><%= tariff.speed %> Мбіт/сек</a></li>
+						<li><a href="javascript:;"><%= tariff.service1 %></a></li>
+						<li><a href="javascript:;"><%= tariff.service2 %></a></li>
+					</ul>
+					<% if user_signed_in? %>
+						<a class="popup-with-zoom-anim order-btn" href="#small-dialog">Купити</a>
+					<% else %>
+						<%= link_to 'Увійти щоб замовити', new_user_session_path, class: 'order-btn' %></a>
+					<% end %>
+				</div>
 		     </div>
-             <div class="col-md-3">
-							<div class="pricing-table-grid">
-								<h3><span class="dollar">$</span>6<br><span class="month">Per Month</span></h3>
-								<ul>
-									<li><span>Advanced Plan</span></li>
-									<li><a href="#">10GB Disk Space</a></li>
-									<li><a href="#">1TB Bandwidth</a></li>
-									<li><a href="#">Free DDoS Protection</a></li>
-									<li><a href="#">Free Daily Backups</a></li>
-									<li><a href="#">Managed Hosting</a></li>
-								</ul>
-								<a class="popup-with-zoom-anim order-btn" href="#small-dialog">Sign Up</a>
-							</div>
-		     </div>	
-	         <div class="col-md-3">
-							<div class="pricing-table-grid">
-								<h3><span class="dollar">$</span>8<br><span class="month">Per Month</span></h3>
-								<ul>
-									<li><span>Business Plan</span></li>
-									<li><a href="#">10GB Disk Space</a></li>
-									<li><a href="#">1TB Bandwidth</a></li>
-									<li><a href="#">Free DDoS Protection</a></li>
-									<li><a href="#">Free Daily Backups</a></li>
-									<li><a href="#">Managed Hosting</a></li>
-								</ul>
-								<a class="popup-with-zoom-anim order-btn" href="#small-dialog">Sign Up</a>
-							</div>
-		    </div>
-	        <div class="col-md-3">
-							<div class="pricing-table-grid">
-								<h3><span class="dollar">$</span>9<br><span class="month">Per Month</span></h3>
-								<ul>
-									<li><span>Gold Plan</span></li>
-									<li><a href="#">10GB Disk Space</a></li>
-									<li><a href="#">1TB Bandwidth</a></li>
-									<li><a href="#">Free DDoS Protection</a></li>
-									<li><a href="#">Free Daily Backups</a></li>
-									<li><a href="#">Managed Hosting</a></li>
-								</ul>
-								<a class="popup-with-zoom-anim order-btn" href="#small-dialog">Sign Up</a>
-							</div>
-		    </div>	
+	     <% end %>
 		    <div class="clearfix"> </div>								
        </div>
 </div>
@@ -230,55 +136,35 @@
         </h4>
 		<div class="wmuSlider example1" style="height: 150px;">
 			<div class="wmuSliderWrapper">
-				<article style="position: relative; width: 100%; opacity: 1;"> 
-				   	   <div class="banner-wrap">
-				   	 	   <ul class="grid-1">
-				   	 			<li class="grid-1_left">
-				   	 				<img src="images/s3.jpg" class="img-responsive" alt="">
-				   	 			</li>
-				   	 			<li class="grid-1_right">
-				   	 				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the when an unknown printer took a galley of type and scrambled it to make. a type specimen book. It has survived not only five centuries. but also the leap into electronic typesetting, remaining essentially unchanged</p>
-								    <h4>By<br><span class="m_10">Leap Designer</span></h4>
-				   	 			</li>
-				   	 			<div class="clearfix"> </div>
-				   	 		</ul>
-				   	   </div>
-				   </article>
-				   <article style="position: absolute; width: 100%; opacity: 0;"> 
-				   	   <div class="banner-wrap">
-				   	 	   <ul class="grid-1">
-				   	 			<li class="grid-1_left">
-				   	 				<img src="images/s4.jpg" class="img-responsive" alt="">
-				   	 			</li>
-				   	 			<li class="grid-1_right">
-				   	 				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the when an unknown printer took a galley of type and scrambled it to make. a type specimen book. It has survived not only five centuries. but also the leap into electronic typesetting, remaining essentially unchanged</p>
-								    <h4>By<br><span class="m_10">Leap Designer</span></h4>
-				   	 			</li>
-				   	 			<div class="clearfix"> </div>
-				   	 		</ul>
-				   	   </div>
-				   </article>
-				    <article style="position: absolute; width: 100%; opacity: 0;"> 
-				   	   <div class="banner-wrap">
-				   	 	   <ul class="grid-1">
-				   	 			<li class="grid-1_left">
-				   	 				<img src="images/s2.jpg" class="img-responsive" alt="">
-				   	 			</li>
-				   	 			<li class="grid-1_right">
-				   	 				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the when an unknown printer took a galley of type and scrambled it to make. a type specimen book. It has survived not only five centuries. but also the leap into electronic typesetting, remaining essentially unchanged</p>
-								    <h4>By<br><span class="m_10">Leap Designer</span></h4>
-				   	 			</li>
-				   	 			<div class="clearfix"> </div>
-				   	 		</ul>
-				   	   </div>
-				   </article>
+				<% @testimonials.each do |testimonial| %>
+					<article style="position: relative; width: 100%; opacity: 1;"> 
+					   	   <div class="banner-wrap">
+					   	 	   <ul class="grid-1">
+					   	 			<li class="grid-1_left">
+					   	 				<%= image_tag(testimonial.photo.url, class: 'img-responsive') %>
+					   	 			</li>
+					   	 			<li class="grid-1_right">
+					   	 				<p><%= testimonial.message %></p>
+									    <h4>Написав<br><span class="m_10"><%= testimonial.name %></span></h4>
+					   	 			</li>
+					   	 			<div class="clearfix"> </div>
+					   	 		</ul>
+					   	   </div>
+					   </article>
+				   <% end %>
 				</div>
 			    <ul class="wmuSliderPagination">
-                	<li><a href="#" class="">0</a></li>
-                	<li><a href="#" class="">1</a></li>
-                	<li><a href="#" class="wmuActive">2</a></li>
+			    	<% i = 0 %>
+			    	<% @testimonials.each do |testimonial| %>
+                		<li><a href="#" class=""><%= i+=1 %></a></li>
+            		<% end %>
                 </ul>
-            <ul class="wmuSliderPagination"><li><a href="#" class="wmuActive">0</a></li><li><a href="#" class="">1</a></li><li><a href="#" class="">2</a></li></ul></div>
+            <ul class="wmuSliderPagination">
+            <% i = 0 %>
+	    	<% @testimonials.each do |testimonial| %>
+        		<li><a href="#" class=""><%= i+=1 %></a></li>
+    		<% end %>
+            </ul></div>
 			  <script>
        			$('.example1').wmuSlider();         
    		     </script> 	           	      

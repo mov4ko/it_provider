@@ -1,9 +1,11 @@
 class PagesController < ApplicationController
 
-	before_action :set_users_question, only: [:faq, :testimonials]
-	before_action :authenticate_user!, only: [:dashboard]
+	before_action :set_users_question, only: [:faq, :testimonials, :contact]
+	before_action :authenticate_user!, only: [:dashboard, :buy_tariff]
 
 	def home
+		@tariffs = Tariff.all
+		@testimonials = Testimonial.all.limit(3)
 	end
 
 	def faq
@@ -34,6 +36,9 @@ class PagesController < ApplicationController
 		@offers = Offer.all
 	end
 
+	def contact
+	end
+
 	def dashboard
 	end
 
@@ -45,6 +50,32 @@ class PagesController < ApplicationController
 		else
 			redirect_to :back, flash: { alert: "Сталася помилка при збереженні вашого запитання, спробуйде знову." }
 		end
+	end
+
+	def buy_tariff
+		@tariff = Tariff.find(params[:id])
+
+		if current_user.tariffs.size < 2
+			current_user.account.money = current_user.account.money.to_i - @tariff.price.to_i
+			if current_user.account.money.to_i > 0
+				current_user.account.save
+				@user_tariff = UserTariff.new
+				@user_tariff.expired = current_user.tariffs.size > 0 ? Date.today + 2.month : Date.today + 1.month
+				@user_tariff.user = current_user
+				@user_tariff.tariff = Tariff.find(params[:id])
+				if @user_tariff.save
+
+					redirect_to :back, flash: { notice: "Дякуємо за покупку, тариф буде активовано з наступного місяця." }
+				else
+					redirect_to :back, flash: { alert: "Сталася помилка при покупці, спробуйде знову." }
+				end
+			else
+				redirect_to :back, flash: { alert: "Не достатньо коштів на рахунку." }
+			end
+		else
+			redirect_to :back, flash: { alert: "Перевищено максимальну кількість тарифів на аккаунт." }
+		end
+
 	end
 
 	private

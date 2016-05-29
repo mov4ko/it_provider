@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
+gem 'country_select'
 
 group :development, :test do
   gem 'byebug'
